@@ -6,7 +6,8 @@ import * as yup from 'yup'
 import formSchema from './formSchema'
 
 const initialFormValues = {
-  name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
   termsOfService: false,
@@ -14,7 +15,8 @@ const initialFormValues = {
 }
 
 const initialFormErrors = {
-  name: '',
+  first_name: '',
+  last_name: '',
   email: '',
   password: '',
 }
@@ -107,7 +109,8 @@ function App() {
     event.preventDefault()
 
     const newUser = {
-      name: formValues.name.trim(),
+      first_name: formValues['first_name'].trim(),
+      last_name: formValues['last_name'].trim(),
       email: formValues.email.trim(),
       password: formValues.password.trim(),
       termsOfService: formValues.termsOfService
@@ -116,26 +119,26 @@ function App() {
 
   }
 
-  function User({ details }) {
+  // function User({ details }) {
 
-    if (!details) {
-      return <h3> Still fetching a user</h3>
-    }
-    // debugger
-    return (
-      <div className='user-container'>
-        <h2>{details.name} </h2>
-        <h2>{details['first_name']} {details['last_name']}</h2>
-        <img src={details.avatar} alt='🤭'/>  
-        <p>email: {details.email} </p>
+  //   if (!details) {
+  //     return <h3> Still fetching a user</h3>
+  //   }
+  //   // debugger
+  //   return (
+  //     <div className='user-container'>
+  //       <h2>{details.name} </h2>
+  //       <h2>{details['first_name']} {details['last_name']}</h2>
+  //       <img src={details.avatar} alt='🤭'/>  
+  //       <p>email: {details.email} </p>
       
-        {/* <p>{details.password} </p> */}
+  //       {/* <p>{details.password} </p> */}
 
-      </div>
+  //     </div>
 
-    )
+  //   )
 
-  }
+  // }
 
   // ~~~~~~Side Effects
   useEffect(() => {
@@ -168,8 +171,21 @@ function App() {
 
 
         {users.map(user => {
+          // debugger
           return (
-            <User key={user.id} details={user} />
+            // <User key={user.id} details={user} />
+           
+              <div className='user-container' key={user.id}>
+                {/* <h2>{user.name} </h2> */}
+                <h2>{user['first_name']} {user['last_name']}</h2>
+                <img src={user.avatar} alt='🤭'/>  
+                <p>email: {user.email} </p>
+              
+                {/* <p>{details.password} </p> */}
+        
+              </div>
+        
+            
           )
         })
         }

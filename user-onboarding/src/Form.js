@@ -19,7 +19,8 @@ function Form(props) {
                 <button disabled={disabled}>submit</button>
 
                 <div className='errors'>
-                    <div>{errors.name}</div>
+                    <div>{errors['first_name']}</div>
+                    <div>{errors['last_name']}</div>
                     <div>{errors.email}</div>
                     <div>{errors.password}</div>
                     <div>{errors.termOfService}</div>
@@ -30,16 +31,26 @@ function Form(props) {
                 <h4>General Info</h4>
 
                 {/* ```Inputs/Labels```` */}
-                <label>Name:
+                <label>First Name:
         <input
-                        value={values.name}
+                        value={values['first_name']}
                         onChange={onInputChange}
-                        name='name'
+                        name='first_name'
                         type='text'
                         placeholder='Type name'
                     />
                 </label>
 
+                <label>Last Name:
+        <input
+                        value={values['last_name']}
+                        onChange={onInputChange}
+                        name='last_name'
+                        type='text'
+                        placeholder='Type name'
+                    />
+                </label>
+<div className='email'>
                 <label>Email:
             <input
                         value={values.email}
@@ -49,7 +60,7 @@ function Form(props) {
                         placeholder='Type email'
                     />
                 </label>
-
+                </div>
                 <label>Password:
             <input
                         value={values.password}
@@ -59,7 +70,7 @@ function Form(props) {
                         placeholder='Type password'
                     />
                 </label>
-
+<div className='terms-of-service'>
                 <label>Terms of service:
             <input
                         type='checkbox'
@@ -68,6 +79,7 @@ function Form(props) {
                         onChange={onCheckboxChange}
                     />
                 </label>
+                </div>
             </div>
 
         </form>
